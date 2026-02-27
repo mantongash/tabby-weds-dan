@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Forum&family=Tangerine:wght@400;700&display=swap');
+
+@import "tailwindcss";
+
+
+
+@font-face {
+  font-family: "Bickham";
+  src: url("./assets/fonts/bickham-script-pro-webfont/Bickham\ Script\ Pro\ Regular.woff")
+      format("woff")
+}
+
+
+h2, h2{
+  font-family: "Tangerine", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+p, h3{
+  font-family: "Forum", serif;
+}
+
+h2{
+  font-size: 30px;
+}
+
+

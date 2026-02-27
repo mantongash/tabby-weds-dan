@@ -45,7 +45,7 @@ function Invite() {
     title: "Tabitha and Daniel's Wedding",
     description:
       "Come witness two hearts becoming one as Tabby and Dan begin their forever",
-    start: "2026-04-11 10:00:00 +0300",
+    start: "2026-04-11T10:00:00+03:00",
     location: "Christ the King Catholic Church, Muthua",
   };
 
@@ -133,7 +133,7 @@ function Invite() {
   }
 
   return (
-    <div className="flex justify-center items-center flex-col" ref={scope}>
+    <div className="flex overflow-hidden justify-center items-center flex-col" ref={scope}>
       <motion.div
         layout
         id="frame"

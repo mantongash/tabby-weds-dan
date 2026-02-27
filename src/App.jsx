@@ -4,10 +4,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Invite />} />
+        <Route path="/" exact element={<Invite />} />
         <Route path="/:slug" element={<Invite />} />
       </Routes>
-      <Invite />
     </BrowserRouter>
   );
 }

@@ -1,4 +1,5 @@
 import rings from "../assets/images/rings.svg";
+import monogram from "../assets/images/monogram-navy.svg";
 import openEnvelope from "../assets/images/openEnvelope.png";
 import closedEnvelope from "../assets/images/closed envelope.jpeg";
 import arrow from "../assets/images/arrow.svg";
@@ -87,10 +88,21 @@ function Invite() {
     );
 
     await animate(
+      "#rings",
+      { opacity: 0, x: 60 },
+      { duration: 1, ease: easeIn }
+    );
+    await animate(
+      "#monogram",
+      { opacity: 1, x: 0 },
+      { duration: 1, ease: easeIn }
+    );
+    await animate(
       "#name",
       { opacity: 1, y: 0, color: ["#D4AF37", "#D4AF37", "#0B1D51"] },
       { duration: 2, ease: easeIn }
     );
+
     animate("#header", { y: -80 }, { duration: 1, ease: easeIn });
     animate("#content", { y: -80 }, { duration: 1, ease: easeIn });
     animate(
@@ -133,7 +145,10 @@ function Invite() {
   }
 
   return (
-    <div className="flex overflow-hidden justify-center items-center flex-col" ref={scope}>
+    <div
+      className="flex overflow-hidden justify-center items-center flex-col"
+      ref={scope}
+    >
       <motion.div
         layout
         id="frame"
@@ -165,7 +180,23 @@ function Invite() {
           <h2 className="tracking-widest font-bold">Tabitha Nafula</h2>
           <p className="text-xl tracking-widest">and</p>
           <h2 className="tracking-widest font-bold mb-5">Daniel Mbuthia</h2>
-          <img src={rings} alt="Rings" className="block" width={40} />
+          <div className="flex justify-center items-center">
+            <motion.img
+              id="rings"
+              src={rings}
+              alt="Rings"
+              className="block"
+              width={40}
+            />
+            <motion.img
+              id="monogram"
+              initial={{ opacity: 0, x: -60 }}
+              src={monogram}
+              alt=""
+              width={40}
+              className="absolute block mb-5"
+            />
+          </div>
 
           <div className="h-[1px] w-[20%] bg-[#0B1D51] my-5"></div>
           <p className="flex justify-center relative mb-5">

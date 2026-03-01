@@ -372,7 +372,7 @@ function Invite() {
       <AnimatePresence>
         {showRsvp && (
           <motion.div
-            className="flex flex-col gap-3 w-50 bg-white border border-[#D4AF37] p-5 rounded-md fixed z-40 shadow-md"
+            className="flex flex-col w-70 gap-3 bg-white border border-[#D4AF37] p-7 rounded-md fixed z-40 shadow-md"
             exit={{ opacity: 0, y: -60 }}
             initial={{ opacity: 0, y: -60 }}
             animate={{
@@ -380,7 +380,7 @@ function Invite() {
               y: showRsvp ? 0 : -60,
             }}
             transition={{
-              duration: 1,
+              duration: 0.5,
               ease: showRsvp ? easeIn : easeOut,
             }}
           >
@@ -428,7 +428,7 @@ function Invite() {
               </div>
             )}
             <span
-              className="cursor-pointer absolute top-1 right-1"
+              className="cursor-pointer absolute top-1 right-1 p-2"
               onClick={() => setShowRsvp(false)}
             >
               X
@@ -441,7 +441,7 @@ function Invite() {
       <AnimatePresence>
         {showDirections && (
           <motion.div
-            className="flex flex-col gap-3 w-50 bg-white border border-[#D4AF37] p-5 rounded-md fixed z-40 shadow-md"
+            className="flex flex-col gap-3 w-70 bg-white border border-[#D4AF37] p-7 rounded-md fixed z-40 shadow-md"
             exit={{ opacity: 0, y: -60 }}
             initial={{ opacity: 0, y: -60 }}
             animate={{
@@ -449,7 +449,7 @@ function Invite() {
               y: showDirections ? 0 : -60,
             }}
             transition={{
-              duration: 1,
+              duration: 0.5,
               ease: showDirections ? easeIn : easeOut,
             }}
           >
@@ -460,7 +460,7 @@ function Invite() {
               </button>
             </a>
             <a
-              htref="https://maps.app.goo.gl/L6ujf1RniCzPzkKy9"
+              href="https://maps.app.goo.gl/L6ujf1RniCzPzkKy9"
               target="_blank"
             >
               <button className="bg-[#0B1D51] text-[#D4AF37] w-full rounded-md flex justify-center items-center py-2 px-3 gap-3">
@@ -468,7 +468,7 @@ function Invite() {
               </button>
             </a>
             <span
-              className="cursor-pointer absolute top-1 right-1"
+              className="cursor-pointer absolute top-1 right-1 p-2"
               onClick={() => setShowDirections(false)}
             >
               X

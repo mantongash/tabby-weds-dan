@@ -2,6 +2,7 @@ import rings from "../assets/images/rings.svg";
 import monogram from "../assets/images/monogram-navy.svg";
 import openEnvelope from "../assets/images/openEnvelope.png";
 import closedEnvelope from "../assets/images/closed envelope.jpeg";
+import couple from "../assets/images/couple_images.png"
 import arrow from "../assets/images/arrow.svg";
 import {
   easeIn,
@@ -103,8 +104,10 @@ function Invite() {
       { duration: 2, ease: easeIn }
     );
 
-    animate("#header", { y: -80 }, { duration: 1, ease: easeIn });
-    animate("#content", { y: -80 }, { duration: 1, ease: easeIn });
+    animate("#header", { y: -160 }, { duration: 1, ease: easeIn });
+    animate("#couple", { y: -500,opacity:0 }, { duration: 1, ease: easeIn });
+
+    animate("#content", { y: -160 }, { duration: 1, ease: easeIn });
     animate(
       "#openEnvelope",
       {
@@ -176,7 +179,8 @@ function Invite() {
           width={70}
           className="absolute bottom-[-3%] left-[-10%]"
         />
-        <motion.div id="header" className="flex flex-col items-center">
+        <motion.div id="header" initial={{y:0}} className="flex flex-col items-center">
+          <img id="couple" src={couple} initial ={{opacity:1,y:0}} alt="" className="" width={150}/>
           <h2 className="tracking-widest font-bold">Tabitha Nafula</h2>
           <p className="text-xl tracking-widest">and</p>
           <h2 className="tracking-widest font-bold mb-5">Daniel Mbuthia</h2>

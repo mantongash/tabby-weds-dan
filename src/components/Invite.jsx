@@ -2,7 +2,7 @@ import rings from "../assets/images/rings.svg";
 import monogram from "../assets/images/monogram-navy.svg";
 import openEnvelope from "../assets/images/openEnvelope.png";
 import closedEnvelope from "../assets/images/closed envelope.jpeg";
-import couple from "../assets/images/couple_images.png"
+import couple from "../assets/images/couple_images.png";
 import arrow from "../assets/images/arrow.svg";
 import {
   easeIn,
@@ -105,7 +105,7 @@ function Invite() {
     );
 
     animate("#header", { y: -160 }, { duration: 1, ease: easeIn });
-    animate("#couple", { y: -500,opacity:0 }, { duration: 1, ease: easeIn });
+    animate("#couple", { y: -500, opacity: 0 }, { duration: 1, ease: easeIn });
 
     animate("#content", { y: -160 }, { duration: 1, ease: easeIn });
     animate(
@@ -179,8 +179,19 @@ function Invite() {
           width={70}
           className="absolute bottom-[-3%] left-[-10%]"
         />
-        <motion.div id="header" initial={{y:0}} className="flex flex-col items-center">
-          <img id="couple" src={couple} initial ={{opacity:1,y:0}} alt="" className="" width={150}/>
+        <motion.div
+          id="header"
+          initial={{ y: 0 }}
+          className="flex flex-col items-center"
+        >
+          <img
+            id="couple"
+            src={couple}
+            initial={{ opacity: 1, y: 0 }}
+            alt=""
+            className=""
+            width={150}
+          />
           <h2 className="tracking-widest font-bold">Tabitha Nafula</h2>
           <p className="text-xl tracking-widest">and</p>
           <h2 className="tracking-widest font-bold mb-5">Daniel Mbuthia</h2>
@@ -197,7 +208,7 @@ function Invite() {
               initial={{ opacity: 0, x: -60 }}
               src={monogram}
               alt=""
-              width={40}
+              width={30}
               className="absolute block mb-5"
             />
           </div>
@@ -376,7 +387,7 @@ function Invite() {
       <AnimatePresence>
         {showRsvp && (
           <motion.div
-            className="flex flex-col w-70 gap-3 bg-white border border-[#D4AF37] p-7 rounded-md fixed z-40 shadow-md"
+            className="flex flex-col w-70 gap-3 bg-white border-2 border-[#D4AF37] p-7 rounded-md fixed z-40 shadow-4xl"
             exit={{ opacity: 0, y: -60 }}
             initial={{ opacity: 0, y: -60 }}
             animate={{
@@ -411,7 +422,9 @@ function Invite() {
                   className="p-1 border w-full"
                   placeholder="Your name"
                 />
-                <label htmlFor="guests"></label>
+                <label htmlFor="guests" className="text-center">
+                  Number of guests (including you)
+                </label>
                 <input
                   id="guests"
                   type="number"
@@ -431,6 +444,13 @@ function Invite() {
                 </button>
               </div>
             )}
+
+            <button
+              className="border border-red-500 bg-red-500 text-white w-full rounded-md mt-5 py-2"
+              onClick={() => setShowRsvp(false)}
+            >
+              Cancel
+            </button>
             <span
               className="cursor-pointer absolute top-1 right-1 p-2"
               onClick={() => setShowRsvp(false)}
@@ -445,7 +465,7 @@ function Invite() {
       <AnimatePresence>
         {showDirections && (
           <motion.div
-            className="flex flex-col gap-3 w-70 bg-white border border-[#D4AF37] p-7 rounded-md fixed z-40 shadow-md"
+            className="flex flex-col gap-3 w-70 bg-white border-2 border-[#D4AF37] p-7 rounded-md fixed z-40 shadow-4xl"
             exit={{ opacity: 0, y: -60 }}
             initial={{ opacity: 0, y: -60 }}
             animate={{
@@ -463,14 +483,17 @@ function Invite() {
                 <Church /> Church
               </button>
             </a>
-            <a
-              href="https://maps.app.goo.gl/L6ujf1RniCzPzkKy9"
-              target="_blank"
-            >
+            <a href="https://maps.app.goo.gl/L6ujf1RniCzPzkKy9" target="_blank">
               <button className="bg-[#0B1D51] text-[#D4AF37] w-full rounded-md flex justify-center items-center py-2 px-3 gap-3">
                 <ConciergeBell /> Reception
               </button>
             </a>
+            <button
+              className="border border-red-500 bg-red-500 text-white w-full rounded-md mt-5 py-2"
+              onClick={() => setShowDirections(false)}
+            >
+              Cancel
+            </button>
             <span
               className="cursor-pointer absolute top-1 right-1 p-2"
               onClick={() => setShowDirections(false)}

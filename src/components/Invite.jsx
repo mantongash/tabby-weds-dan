@@ -452,7 +452,7 @@ function Invite() {
             </button>
 
             {!willAttend && (
-              <button className="bg-red-500 text-white w-full flex justify-center items-center text-[.8rem] rounded-md p-1 gap-2 cursor-pointer">
+              <button className="bg-red-500 text-white w-full flex justify-center items-center text-[.8rem] rounded-md p-1 gap-2 cursor-pointer" onClick={window.location.reload()}>
                 <Frown /> I will regretfully decline
               </button>
             )}

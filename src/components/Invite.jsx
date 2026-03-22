@@ -172,6 +172,8 @@ function Invite() {
     await animate("#divider2", { opacity: 1, x: 0 }, { duration: 1 });
     await animate("#join-us", { opacity: 1, x: 0 }, { duration: 1 });
     await animate("#divider3", { opacity: 1, x: 0 }, { duration: 1 });
+    await animate("#theme", { opacity: 1, x: 0 }, { duration: 1 });
+
     await animate("#rsvp", { opacity: 1, y: 0 }, { duration: 1, ease: easeIn });
     await animate(
       "#calendar",
@@ -335,6 +337,7 @@ function Invite() {
               className="h-px w-[20%] bg-[#0B1D51] my-5"
               initial={{ opacity: 0, x: 500 }}
             ></motion.div>
+            <motion.p className="text-[#D4AF37]" id="theme"  initial={{ opacity: 0, x: -500 }}><span className="font-bold">Theme: </span><span>Navy blue, gold and white</span></motion.p>
           </motion.div>
           <div className="flex items-center justify-center relative">
             <div className="relative mt-10">
@@ -452,7 +455,7 @@ function Invite() {
             </button>
 
             {!willAttend && (
-              <button className="bg-red-500 text-white w-full flex justify-center items-center text-[.8rem] rounded-md p-1 gap-2 cursor-pointer" onClick={window.location.reload()}>
+              <button className="bg-red-500 text-white w-full flex justify-center items-center text-[.8rem] rounded-md p-1 gap-2 cursor-pointer" onClick={()=>window.location.reload()}>
                 <Frown /> I will regretfully decline
               </button>
             )}

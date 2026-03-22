@@ -50,6 +50,7 @@ function Invite() {
   });
   const [acceptRsvp, setAcceptRsvp] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [scope, animate] = useAnimate();
 
   const audioRef = useRef(null);
@@ -79,12 +80,14 @@ function Invite() {
   const googleUrl = google(event);
 
   async function handleRsvp() {
+    setLoading(true);
     // Add a new document with a generated id.
     const docRef = await addDoc(collection(db, "rsvp"), rsvpData);
     console.log("Document written with ID: ", docRef.id);
     if (docRef.id) {
       setShowRsvp(false);
       setShowThankYou(true);
+      setLoading(false);
     }
   }
 
@@ -139,10 +142,10 @@ function Invite() {
       { duration: 2, ease: easeIn }
     );
 
-    animate("#header", { y: -160 }, { duration: 1, ease: easeIn });
+    animate("#header", { y: -200 }, { duration: 1, ease: easeIn });
     animate("#couple", { y: -500, opacity: 0 }, { duration: 1, ease: easeIn });
 
-    animate("#content", { y: -160 }, { duration: 1, ease: easeIn });
+    animate("#content", { y: -200 }, { duration: 1, ease: easeIn });
     animate(
       "#openEnvelope",
       {
@@ -154,7 +157,7 @@ function Invite() {
 
     await animate(
       "#border",
-      { height: "700px", opacity: 1 },
+      { height: "800px", opacity: 1 },
       { duration: 2, ease: easeIn }
     );
     animate("#img1", { opacity: 1, y: 0 }, { duration: 2, ease: easeIn });
@@ -184,19 +187,19 @@ function Invite() {
 
   return (
     <div
-      className="flex overflow-hidden justify-center items-center flex-col"
+      className="flex overflow-hidden justify-center items-center flex-col mt-5"
       ref={scope}
     >
       <motion.div
         layout
         id="frame"
         initial={{ border: "none" }}
-        className="flex flex-col items-center justify-center px-2  text-[#0B1D51] bg-[#f2f2f2] h-[700px] scroll-auto max-w-100 relative border-2 rounded-xl m-12 text-center"
+        className="flex flex-col items-center justify-center px-2  text-[#0B1D51] bg-[#f2f2f2] h-[800px] scroll-auto max-w-100 relative border-2 rounded-xl m-6 text-center"
       >
         <motion.div
           id="border"
           initial={{ height: 0, opacity: 0 }}
-          className="h-fit border-2 rounded-md px-2 border-[#0B1D51] absolute w-full"
+          className="h-full border-2 rounded-md px-2 border-[#0B1D51] absolute w-full"
         ></motion.div>
         <motion.img
           id="img1"
@@ -498,7 +501,7 @@ function Invite() {
                   className="w-full bg-[#D4AF37] p-1 rounded-md cursor-pointer"
                   onClick={handleRsvp}
                 >
-                  RSVP
+                  {loading ? "Loading ..." : "RSVP"}
                 </button>
               </div>
             )}

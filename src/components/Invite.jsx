@@ -28,19 +28,44 @@ import { google } from "calendar-link";
 
 import endlessLove from "../assets/audio/endless-love.mp3";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useParams } from "react-router";
+
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../firebase";
+
+import { useWindowSize } from "react-use";
+import Confetti from "react-confetti";
 
 function Invite() {
   const [showDirections, setShowDirections] = useState(false);
   const [showRsvp, setShowRsvp] = useState(false);
   const [willAttend, setWillAttend] = useState(false);
   const [mute, setMute] = useState(false);
+  const [rsvpData, setRsvpData] = useState({
+    name: "",
+    guests: "1",
+    message: "",
+    date: new Date(),
+  });
+  const [acceptRsvp, setAcceptRsvp] = useState(false);
+  const [showThankYou, setShowThankYou] = useState(false);
   const [scope, animate] = useAnimate();
 
   const audioRef = useRef(null);
 
   const { slug } = useParams();
+
+  const { width, height } = useWindowSize();
+
+  useEffect(() => {
+    if (slug) {
+      document.title = `Dan and Tabby invites ${slug}`;
+    } else {
+      document.title = `Dan and Tabby invites you`;
+    }
+  }, []);
+
   console.log(slug);
 
   const event = {
@@ -52,6 +77,16 @@ function Invite() {
   };
 
   const googleUrl = google(event);
+
+  async function handleRsvp() {
+    // Add a new document with a generated id.
+    const docRef = await addDoc(collection(db, "rsvp"), rsvpData);
+    console.log("Document written with ID: ", docRef.id);
+    if (docRef.id) {
+      setShowRsvp(false);
+      setShowThankYou(true);
+    }
+  }
 
   async function handleOpen() {
     if (audioRef.current) {
@@ -383,6 +418,10 @@ function Invite() {
         </div>
       </footer>
 
+      {/* Confetti */}
+      {showThankYou && (
+        <Confetti width={width} height={height} numberOfPieces={200} />
+      )}
       {/*RSVP Modal*/}
       <AnimatePresence>
         {showRsvp && (
@@ -419,27 +458,46 @@ function Invite() {
               <div className="flex flex-col justify-center items-center gap-1 p-1">
                 <input
                   type="text"
+                  name="name"
+                  value={rsvpData.name}
                   className="p-1 border w-full"
                   placeholder="Your name"
+                  onChange={(e) =>
+                    setRsvpData((prev) => ({ ...prev, name: e.target.value }))
+                  }
                 />
                 <label htmlFor="guests" className="text-center">
                   Number of guests (including you)
                 </label>
                 <input
+                  name="guests"
+                  value={rsvpData.guests}
                   id="guests"
                   type="number"
                   min={1}
                   max={20}
-                  value={1}
                   className="border w-full"
+                  onChange={(e) =>
+                    setRsvpData((prev) => ({ ...prev, guests: e.target.value }))
+                  }
                 />
                 <textarea
-                  name=""
+                  name="message"
+                  value={rsvpData.message}
                   id=""
                   placeholder="Leave the couple a message (optional)"
                   className="border w-full p-0.5"
+                  onChange={(e) =>
+                    setRsvpData((prev) => ({
+                      ...prev,
+                      message: e.target.value,
+                    }))
+                  }
                 ></textarea>
-                <button className="w-full bg-[#D4AF37] p-1 rounded-md cursor-pointer">
+                <button
+                  className="w-full bg-[#D4AF37] p-1 rounded-md cursor-pointer"
+                  onClick={handleRsvp}
+                >
                   RSVP
                 </button>
               </div>
@@ -454,6 +512,47 @@ function Invite() {
             <span
               className="cursor-pointer absolute top-1 right-1 p-2"
               onClick={() => setShowRsvp(false)}
+            >
+              X
+            </span>
+          </motion.div>
+        )}
+
+        {/* {acceptRsvp ? setShowRsvp(false) : showThankYou(true)} */}
+      </AnimatePresence>
+
+      {/* Thank you modal */}
+
+      <AnimatePresence>
+        {showThankYou && (
+          <motion.div
+            className="flex flex-col justify-center items-center w-70 gap-3 bg-white border-2 border-[#D4AF37] p-7 rounded-md fixed z-40 shadow-4xl"
+            exit={{ opacity: 0, y: -60 }}
+            initial={{ opacity: 0, y: -60 }}
+            animate={{
+              opacity: showThankYou ? 1 : 0,
+              y: showThankYou ? 0 : -60,
+            }}
+            transition={{
+              duration: 0.5,
+              ease: showRsvp ? easeIn : easeOut,
+            }}
+          >
+            <h3>🎉 Thank you, {rsvpData.name}</h3>
+
+            <p className="text-center">
+              We’re excited to celebrate with you 💛
+            </p>
+            <p className="italic text-[#0B1D51] my-4">- Tabby and Dan</p>
+            <button
+              className=" bg-[#D4AF37] text-[#0B1D51] w-full rounded-md mt-5 py-2"
+              onClick={() => setShowThankYou(false)}
+            >
+              Okay
+            </button>
+            <span
+              className="cursor-pointer absolute top-1 right-1 p-2"
+              onClick={() => setShowThankYou(false)}
             >
               X
             </span>

@@ -61,11 +61,13 @@ function Invite() {
 
   useEffect(() => {
     if (slug) {
-      document.title = `Dan and Tabby invites ${slug}`;
+      const formattedSlug = slug.split("-").join(" ");
+      
+      document.title = `Dan and Tabby invites ${formattedSlug} to their wedding`;
     } else {
-      document.title = `Dan and Tabby invites you`;
+      document.title = `Dan and Tabby invites you to their wedding`;
     }
-  }, []);
+  });
 
   console.log(slug);
 
@@ -296,14 +298,23 @@ function Invite() {
               className="tracking-wider"
               initial={{ opacity: 0, x: -500 }}
             >
-              on <span  onClick={() => window.open(googleUrl)}>Saturday, 11<sup>th</sup> April 2026 at 10:00 a.m</span>.
+              on{" "}
+              <span onClick={() => window.open(googleUrl)}>
+                Saturday, 11<sup>th</sup> April 2026 at 10:00 a.m
+              </span>
+              .
             </motion.p>
             <motion.p
               id="church"
               className="tracking-wider mb-5"
               initial={{ opacity: 0, x: 500 }}
             >
-              <a  href="https://maps.app.goo.gl/KkayC5RLxfVHtT3N9" target="_blank">Christ the King Catholic Church, Muthua</a>
+              <a
+                href="https://maps.app.goo.gl/KkayC5RLxfVHtT3N9"
+                target="_blank"
+              >
+                Christ the King Catholic Church, Muthua
+              </a>
             </motion.p>
             <motion.p
               id="reception"
@@ -317,7 +328,14 @@ function Invite() {
               className="tracking-wider text-center"
               initial={{ opacity: 0, x: 500 }}
             >
-             <a  href="https://maps.app.goo.gl/L6ujf1RniCzPzkKy9" target="_blank"> St. Mary's Kagondo Catholic Church Grounds </a> from 2:00 p.m.
+              <a
+                href="https://maps.app.goo.gl/L6ujf1RniCzPzkKy9"
+                target="_blank"
+              >
+                {" "}
+                St. Mary's Kagondo Catholic Church Grounds{" "}
+              </a>{" "}
+              from 2:00 p.m.
             </motion.p>
             <motion.div
               id="divider2"
@@ -337,7 +355,14 @@ function Invite() {
               className="h-px w-[20%] bg-[#0B1D51] my-5"
               initial={{ opacity: 0, x: 500 }}
             ></motion.div>
-            <motion.p className="text-[#D4AF37]" id="theme"  initial={{ opacity: 0, x: -500 }}><span className="font-bold">Theme: </span><span>Navy blue, gold and white</span></motion.p>
+            <motion.p
+              className="text-[#D4AF37]"
+              id="theme"
+              initial={{ opacity: 0, x: -500 }}
+            >
+              <span className="font-bold">Theme: </span>
+              <span>Navy blue, gold and white</span>
+            </motion.p>
           </motion.div>
           <div className="flex items-center justify-center relative">
             <div className="relative mt-10">
@@ -455,7 +480,10 @@ function Invite() {
             </button>
 
             {!willAttend && (
-              <button className="bg-red-500 text-white w-full flex justify-center items-center text-[.8rem] rounded-md p-1 gap-2 cursor-pointer" onClick={()=>window.location.reload()}>
+              <button
+                className="bg-red-500 text-white w-full flex justify-center items-center text-[.8rem] rounded-md p-1 gap-2 cursor-pointer"
+                onClick={() => window.location.reload()}
+              >
                 <Frown /> I will regretfully decline
               </button>
             )}

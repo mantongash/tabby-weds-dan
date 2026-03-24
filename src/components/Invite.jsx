@@ -142,10 +142,10 @@ function Invite() {
       { duration: 2, ease: easeIn }
     );
 
-    animate("#header", { y: -200 }, { duration: 1, ease: easeIn });
+    animate("#header", { y: -170 }, { duration: 1, ease: easeIn });
     animate("#couple", { y: -500, opacity: 0 }, { duration: 1, ease: easeIn });
 
-    animate("#content", { y: -200 }, { duration: 1, ease: easeIn });
+    animate("#content", { y: -170 }, { duration: 1, ease: easeIn });
     animate(
       "#openEnvelope",
       {
@@ -157,7 +157,7 @@ function Invite() {
 
     await animate(
       "#border",
-      { height: "800px", opacity: 1 },
+      { minHeight: "700px", opacity: 1 },
       { duration: 2, ease: easeIn }
     );
     animate("#img1", { opacity: 1, y: 0 }, { duration: 2, ease: easeIn });
@@ -196,7 +196,7 @@ function Invite() {
         layout
         id="frame"
         initial={{ border: "none" }}
-        className="flex flex-col items-center justify-center px-2  text-[#0B1D51] bg-[#f2f2f2] h-[800px] scroll-auto max-w-100 relative border-2 rounded-xl m-6 text-center"
+        className="flex flex-col items-center justify-center px-2  text-[#0B1D51] bg-[#f2f2f2] min-h-[700px] scroll-auto max-w-100 relative border-2 rounded-xl m-6 text-center"
       >
         <motion.div
           id="border"

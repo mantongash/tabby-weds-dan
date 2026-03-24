@@ -144,10 +144,10 @@ function Invite() {
       { duration: 2, ease: easeIn }
     );
 
-    animate("#header", { y: -180 }, { duration: 1, ease: easeIn });
+    animate("#header", { y: -170 }, { duration: 1, ease: easeIn });
     animate("#couple", { y: -500, opacity: 0 }, { duration: 1, ease: easeIn });
 
-    animate("#content", { y: -180 }, { duration: 1, ease: easeIn });
+    animate("#content", { y: -170 }, { duration: 1, ease: easeIn });
     animate(
       "#openEnvelope",
       {

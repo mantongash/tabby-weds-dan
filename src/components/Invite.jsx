@@ -142,10 +142,10 @@ function Invite() {
       { duration: 2, ease: easeIn }
     );
 
-    animate("#header", { y: -170 }, { duration: 1, ease: easeIn });
+    animate("#header", { y: -180 }, { duration: 1, ease: easeIn });
     animate("#couple", { y: -500, opacity: 0 }, { duration: 1, ease: easeIn });
 
-    animate("#content", { y: -170 }, { duration: 1, ease: easeIn });
+    animate("#content", { y: -180 }, { duration: 1, ease: easeIn });
     animate(
       "#openEnvelope",
       {
@@ -296,14 +296,14 @@ function Invite() {
               className="tracking-wider"
               initial={{ opacity: 0, x: -500 }}
             >
-              on <span className="inline-block border-b-2 border-b-[#D4AF37] border-dotted cursor-pointer" onClick={() => window.open(googleUrl)}>Saturday, 11<sup>th</sup> April 2026 at 10:00 a.m</span>.
+              on <span  onClick={() => window.open(googleUrl)}>Saturday, 11<sup>th</sup> April 2026 at 10:00 a.m</span>.
             </motion.p>
             <motion.p
               id="church"
               className="tracking-wider mb-5"
               initial={{ opacity: 0, x: 500 }}
             >
-              <a className="inline-block border-b-2 border-b-[#D4AF37] border-dotted cursor-pointer" href="https://maps.app.goo.gl/KkayC5RLxfVHtT3N9" target="_blank">Christ the King Catholic Church, Muthua</a>
+              <a  href="https://maps.app.goo.gl/KkayC5RLxfVHtT3N9" target="_blank">Christ the King Catholic Church, Muthua</a>
             </motion.p>
             <motion.p
               id="reception"
@@ -317,7 +317,7 @@ function Invite() {
               className="tracking-wider text-center"
               initial={{ opacity: 0, x: 500 }}
             >
-             <a className="inline-block border-b-2 border-b-[#D4AF37] border-dotted cursor-pointer" href="https://maps.app.goo.gl/L6ujf1RniCzPzkKy9" target="_blank"> St. Mary's Kagondo Catholic Church Grounds </a> from 2:00 p.m.
+             <a  href="https://maps.app.goo.gl/L6ujf1RniCzPzkKy9" target="_blank"> St. Mary's Kagondo Catholic Church Grounds </a> from 2:00 p.m.
             </motion.p>
             <motion.div
               id="divider2"

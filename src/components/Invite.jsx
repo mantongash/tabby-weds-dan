@@ -299,7 +299,7 @@ function Invite() {
               initial={{ opacity: 0, x: -500 }}
             >
               on{" "}
-              <span onClick={() => window.open(googleUrl)}>
+              <span className="font-extrabold">
                 Saturday, 11<sup>th</sup> April 2026 at 10:00 a.m
               </span>
               .
@@ -309,12 +309,11 @@ function Invite() {
               className="tracking-wider mb-5"
               initial={{ opacity: 0, x: 500 }}
             >
-              <a
-                href="https://maps.app.goo.gl/KkayC5RLxfVHtT3N9"
-                target="_blank"
+              <span className="font-extrabold"
+
               >
                 Christ the King Catholic Church, Muthua
-              </a>
+              </span>
             </motion.p>
             <motion.p
               id="reception"
@@ -328,13 +327,11 @@ function Invite() {
               className="tracking-wider text-center"
               initial={{ opacity: 0, x: 500 }}
             >
-              <a
-                href="https://maps.app.goo.gl/L6ujf1RniCzPzkKy9"
-                target="_blank"
+              <span className="font-extrabold"
               >
                 {" "}
                 St. Mary's Kagondo Catholic Church Grounds{" "}
-              </a>{" "}
+              </span>{" "}
               from 2:00 p.m.
             </motion.p>
             <motion.div

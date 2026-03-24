@@ -97,7 +97,7 @@ function Invite() {
     if (audioRef.current) {
       audioRef.current.currentTime = 0;
       audioRef.current.play();
-      audioRef.current.volume = 0.15;
+      audioRef.current.volume = 0.2;
     }
     animate(
       "#closedEnvelope",

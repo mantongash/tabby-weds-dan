@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
-import { div } from "motion/react-client";
 
 function Messages() {
   const [messages, setMessages] = useState([]);
@@ -18,7 +17,7 @@ function Messages() {
     })();
   }, []);
   return (
-    <div>D4AF37
+    <div>
         <h2 className="text-center border-b-3 border-b-[#D4AF37] py-4"><span className="text-[#D4AF37]">&hearts;</span> Wall of Love <span className="text-[#D4AF37]">&hearts;</span></h2>
       {messages &&
         messages.map((message) => {

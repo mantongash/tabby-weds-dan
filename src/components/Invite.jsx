@@ -485,7 +485,7 @@ function Invite() {
               </button>
             )}
 
-            {willAttend && (
+            {willAttend ? (
               <div className="flex flex-col justify-center items-center gap-1 p-1">
                 <input
                   type="text"
@@ -532,7 +532,7 @@ function Invite() {
                   {loading ? "Loading ..." : "RSVP"}
                 </button>
               </div>
-            )}
+            ):null}
 
             <button
               className="border border-red-500 bg-red-500 text-white w-full rounded-md mt-5 py-2"
